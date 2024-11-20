@@ -1,5 +1,5 @@
-from menu import Menu
-from close_menu_action import CloseMenuAction
+from src.menu.menu import Menu
+from src.menu.close_menu_action import CloseMenuAction
 
 
 class ErrorAction:

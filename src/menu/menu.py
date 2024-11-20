@@ -1,3 +1,6 @@
+from src.menu.command import Command
+
+
 class Menu:
     def __init__(self, title):
         self.title = title
@@ -25,21 +28,3 @@ class Menu:
     def __str__(self):
         cmds = [f"{command}" for command in self.commands]
         return "\n".join(cmds)
-
-
-class Command:
-    def __init__(self, cmd, title, action):
-        self.cmd = cmd
-        self.title = title
-        self.action = action
-
-    def run(self, menu):
-        self.action.run(menu)
-
-    def __str__(self):
-        return f"{self.cmd}. {self.title}"
-
-
-class MenuException(Exception):
-    def __init__(self, message):
-        self.message = message

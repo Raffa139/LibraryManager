@@ -1,6 +1,6 @@
-import repository as repo
+import src.book.repository as repo
 
-from list_view import ListView
+from src.views.list_view import ListView
 
 
 class ListAction:

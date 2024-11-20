@@ -1,11 +1,14 @@
-import repository as repo
+import src.book.repository as repo
 
-from menu import Menu
-from add_action import AddAction
-from list_action import ListAction
-from search_action import SearchAction
-from book import Book, PublicationYear, Title, Author
-from close_menu_action import CloseMenuAction
+from src.book.author import Author
+from src.book.book import Book
+from src.book.publication_year import PublicationYear
+from src.book.title import Title
+from src.menu.menu import Menu
+from src.book.actions.add_action import AddAction
+from src.book.actions.list_action import ListAction
+from src.book.actions.search_action import SearchAction
+from src.menu.close_menu_action import CloseMenuAction
 
 # print("=== Library Manager ===")
 # print("1. Add book")
@@ -29,30 +32,3 @@ menu.register_cmd("5", "Save and exit", CloseMenuAction())
 
 while not menu.close_requested:
     menu.take_cmd()
-
-# cmd = input()
-#
-# while cmd not in ["1", "2", "3", "4", "5"]:
-#     cmd = input()
-#
-# if cmd == "1":
-#     print("Add book:")
-#
-#     title = input("Title: ")
-#     author = input("Author: ")
-#     year = input("Year: ")
-#
-#     book = Book(title, author, year)
-#     book_repo.add(book)
-# elif cmd == "2":
-#     print("List all books:")
-#
-#     all_books = book_repo.get_all()
-#     for book in all_books:
-#         print(book)
-# elif cmd == "3":
-#     print("Search books")
-# elif cmd == "4":
-#     print("Borrow/Return book")
-# elif cmd == "5":
-#     print("Save and exit")
