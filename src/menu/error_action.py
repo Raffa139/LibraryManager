@@ -1,4 +1,4 @@
-import src.cli as cli
+import src.shared.cli as cli
 
 from src.menu.menu import Menu
 from src.menu.close_menu_action import CloseMenuAction

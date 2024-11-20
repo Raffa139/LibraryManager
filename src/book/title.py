@@ -1,4 +1,4 @@
-from src.value import Value
+from src.shared.value import Value
 
 
 class Title(Value):
