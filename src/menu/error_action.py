@@ -1,3 +1,5 @@
+import src.cli as cli
+
 from src.menu.menu import Menu
 from src.menu.close_menu_action import CloseMenuAction
 
@@ -9,7 +11,7 @@ class ErrorAction:
         error_menu.register_cmd("2", "Home", CloseMenuAction())
 
         while not error_menu.close_requested:
-            print(exception.message)
+            cli.write_str(exception.message)
 
             if error_menu.take_cmd():
                 break

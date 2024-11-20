@@ -1,3 +1,4 @@
+import src.cli as cli
 import src.book.repository as repo
 
 from src.book.author import Author
@@ -10,11 +11,11 @@ from src.value import InvalidValueException
 
 class AddAction:
     def run(self, menu):
-        print("Add book:")
+        cli.write_str("Add book:")
 
-        title_in = input("Title: ")
-        author_in = input("Author: ")
-        year_in = input("Year: ")
+        title_in = cli.read_str("Title: ")
+        author_in = cli.read_str("Author: ")
+        year_in = cli.read_str("Year: ")
 
         try:
             title = Title(title_in)

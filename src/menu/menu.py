@@ -1,3 +1,5 @@
+import src.cli as cli
+
 from src.menu.command import Command
 
 
@@ -8,9 +10,9 @@ class Menu:
         self.close_requested = False
 
     def take_cmd(self):
-        print(self.title)
-        print(self)
-        cmd_input = input().strip()
+        cli.write_str(self.title)
+        cli.write_str(self)
+        cmd_input = cli.read_stripped_str()
 
         for command in self.commands:
             if cmd_input == command.cmd:
