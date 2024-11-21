@@ -35,6 +35,4 @@ class AddAction:
         next_steps_menu.register_cmd("2", "List all books", ListAction())
         next_steps_menu.register_cmd("0", "Home", CloseMenuAction())
 
-        while not next_steps_menu.close_requested:
-            if next_steps_menu.take_cmd():
-                break
+        next_steps_menu.take_single_cmd()

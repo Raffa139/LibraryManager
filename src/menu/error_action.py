@@ -9,6 +9,4 @@ class ErrorAction:
         error_menu.register_cmd("1", "Retry", RerunAction(rerun_on=menu))
         error_menu.register_cmd("0", "Ok (Home)", CloseMenuAction())
 
-        while not error_menu.close_requested:
-            if error_menu.take_cmd():
-                break
+        error_menu.take_single_cmd()

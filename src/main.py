@@ -31,5 +31,4 @@ menu.register_cmd("2", "List all books", ListAction())
 menu.register_cmd("3", "Search books", SearchAction())
 menu.register_cmd("5", "Save and exit", CloseMenuAction())
 
-while not menu.close_requested:
-    menu.take_cmd()
+menu.take_cmd_until_close()

@@ -13,6 +13,15 @@ class Menu:
         self.latest_command = None
         self.close_requested = False
 
+    def take_cmd_until_close(self):
+        while not self.close_requested:
+            self.take_cmd()
+
+    def take_single_cmd(self):
+        while not self.close_requested:
+            if self.take_cmd():
+                break
+
     def take_cmd(self):
         cli.write_str(self.title)
 
