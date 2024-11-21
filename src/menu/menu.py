@@ -10,6 +10,7 @@ class Menu:
         self.subtitle = subtitle
         self.on_error = on_error
         self.commands = []
+        self.latest_command = None
         self.close_requested = False
 
     def take_cmd(self):
@@ -23,14 +24,21 @@ class Menu:
 
         for command in self.commands:
             if cmd_input == command.cmd:
-                try:
-                    command.run(self)
-                except MenuException as e:
-                    self.on_error.run(self, e)
-
+                self.run_cmd(command)
                 return True
         else:
             return False
+
+    def run_cmd(self, command):
+        try:
+            self.latest_command = command
+            command.run(self)
+        except MenuException as e:
+            self.on_error.run(self, e)
+
+    def rerun_latest_cmd(self):
+        if self.latest_command is not None:
+            self.run_cmd(self.latest_command)
 
     def register_cmd(self, cmd, title, action):
         self.commands.append(Command(cmd, title, action))
