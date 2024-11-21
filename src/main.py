@@ -4,6 +4,7 @@ from src.book.author import Author
 from src.book.book import Book
 from src.book.publication_year import PublicationYear
 from src.book.title import Title
+from src.menu.error_action import ErrorAction
 from src.menu.menu import Menu
 from src.book.actions.add_action import AddAction
 from src.book.actions.list_action import ListAction
@@ -23,7 +24,7 @@ book_repo = repo.instance((
     Book(Title("Physik für Einsteiger"), Author("Albert Einstein"), PublicationYear("1975")),
 ))
 
-menu = Menu("=== Library Manager ===")
+menu = Menu("=== Library Manager ===", on_error=ErrorAction())
 
 menu.register_cmd("1", "Add book", AddAction())
 menu.register_cmd("2", "List all books", ListAction())

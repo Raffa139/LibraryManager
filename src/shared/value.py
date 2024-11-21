@@ -1,7 +1,10 @@
+from src.shared.invalid_value_exception import InvalidValueException
+
+
 class Value:
     def __init__(self, value):
         if not self.valid(value):
-            raise InvalidValueException(value)
+            raise InvalidValueException(type(self).__name__, value)
 
         self.value = self.normalize(value)
 
@@ -13,8 +16,3 @@ class Value:
 
     def __str__(self):
         return self.value
-
-
-class InvalidValueException(Exception):
-    def __init__(self, value):
-        super().__init__(f"Value '{value}' invalid")

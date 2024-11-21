@@ -13,16 +13,15 @@ class AddAction:
     def run(self, menu):
         cli.write_str("Add book:")
 
-        title_in = cli.read_str("Title: ")
-        author_in = cli.read_str("Author: ")
-        year_in = cli.read_str("Year: ")
-
         try:
-            title = Title(title_in)
-            author = Author(author_in)
-            year = PublicationYear(year_in)
-        except InvalidValueException:
-            raise MenuException("Failed to created book.")
+            title = Title(cli.read_str("Title: "))
+            author = Author(cli.read_str("Author: "))
+            year = PublicationYear(cli.read_str("Year: "))
+        except InvalidValueException as e:
+            invalid_value = f"'{e.value}'" if e.value else None
+            details = f"Invalid value {f'{invalid_value} ' if invalid_value else ''}for {e.obj_name} given."
+
+            raise MenuException(f"Failed to create book. {details}")
 
         book = Book(title, author, year)
         repo.instance().add(book)

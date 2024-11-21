@@ -6,7 +6,7 @@ from src.book.actions.search_by_title_action import SearchByTitleAction
 
 class SearchAction:
     def run(self, menu):
-        search_menu = Menu("=== Book search ===")
+        search_menu = Menu("=== Book search ===", on_error=menu.on_error)
         search_menu.register_cmd("1", "Search by title", SearchByTitleAction())
         search_menu.register_cmd("2", "Search by author", SearchByAuthorAction())
         search_menu.register_cmd("0", "Home", CloseMenuAction())
