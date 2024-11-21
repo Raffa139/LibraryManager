@@ -1,7 +1,7 @@
 from src.menu.menu import Menu
-from src.menu.close_menu_action import CloseMenuAction
-from src.book.actions.search_by_author_action import SearchByAuthorAction
-from src.book.actions.search_by_title_action import SearchByTitleAction
+from src.menu.actions.close_menu_action import CloseMenuAction
+from src.book.actions.search.search_by_author_action import SearchByAuthorAction
+from src.book.actions.search.search_by_title_action import SearchByTitleAction
 
 
 class SearchAction:

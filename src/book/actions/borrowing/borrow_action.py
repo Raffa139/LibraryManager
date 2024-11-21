@@ -1,7 +1,7 @@
 import src.book.repository as repo
 
 from src.book.actions.borrowing.borrow_selection_action import BorrowSelectionAction
-from src.menu.close_menu_action import CloseMenuAction
+from src.menu.actions.close_menu_action import CloseMenuAction
 from src.menu.menu import Menu
 
 

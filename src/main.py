@@ -5,12 +5,12 @@ from src.book.author import Author
 from src.book.book import Book
 from src.book.publication_year import PublicationYear
 from src.book.title import Title
-from src.menu.error_action import ErrorAction
+from src.menu.actions.error_action import ErrorAction
 from src.menu.menu import Menu
 from src.book.actions.add_action import AddAction
 from src.book.actions.list_action import ListAction
-from src.book.actions.search_action import SearchAction
-from src.menu.close_menu_action import CloseMenuAction
+from src.book.actions.search.search_action import SearchAction
+from src.menu.actions.close_menu_action import CloseMenuAction
 
 # print("=== Library Manager ===")
 # print("1. Add book")

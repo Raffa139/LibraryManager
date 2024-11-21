@@ -6,10 +6,10 @@ from src.book.author import Author
 from src.book.book import Book
 from src.book.publication_year import PublicationYear
 from src.book.title import Title
-from src.menu.close_menu_action import CloseMenuAction
+from src.menu.actions.close_menu_action import CloseMenuAction
 from src.menu.menu import Menu
 from src.menu.menu_exception import MenuException
-from src.menu.rerun_action import RerunAction
+from src.menu.actions.rerun_action import RerunAction
 from src.shared.value import InvalidValueException
 
 
