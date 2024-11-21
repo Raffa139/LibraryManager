@@ -1,8 +1,16 @@
+import src.shared.file as f
+
+from src.book.csv_serializer import CsvSerializer
+
+
 class Repository:
     instance = None
 
-    def __init__(self, initial_date=()):
-        self.books = list(initial_date)
+    def __init__(self, *, file, serializer):
+        self.file = file
+        self.serializer = serializer
+        self.books = []
+        self.load_from_disk()
 
     def find_borrowed(self):
         return [book for book in self.books if book.borrowed]
@@ -19,18 +27,29 @@ class Repository:
     def add(self, book):
         self.books.append(book)
 
-    def remove(self, book):
-        self.books.remove(book)
-
     def borrow(self, book):
         book.borrow()
 
     def give_back(self, book):
         book.give_back()
 
+    def load_from_disk(self):
+        try:
+            content = f.read(self.file)
+            self.books = self.serializer.deserialize(content)
+        except FileNotFoundError:
+            pass  # Ignored: will be created on exit
 
-def instance(initial_date=()):
+    def save_to_disk(self):
+        if len(self.books) == 0:
+            return
+
+        content = self.serializer.serialize(self.books)
+        f.write(self.file, content)
+
+
+def instance():
     if Repository.instance is None:
-        Repository.instance = Repository(initial_date)
+        Repository.instance = Repository(file="library.txt", serializer=CsvSerializer())
 
     return Repository.instance

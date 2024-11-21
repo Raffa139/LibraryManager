@@ -1,9 +1,9 @@
 class Book:
-    def __init__(self, title, author, year):
+    def __init__(self, title, author, year, borrowed=False):
         self.title = title
         self.author = author
         self.year = year
-        self.borrowed = False
+        self.borrowed = borrowed
 
     def borrow(self):
         self.borrowed = True
