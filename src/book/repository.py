@@ -1,11 +1,7 @@
 import src.shared.file as f
 
-from src.book.csv_serializer import CsvSerializer
-
 
 class Repository:
-    instance = None
-
     def __init__(self, *, file, serializer):
         self.file = file
         self.serializer = serializer
@@ -27,12 +23,6 @@ class Repository:
     def add(self, book):
         self.books.append(book)
 
-    def borrow(self, book):
-        book.borrow()
-
-    def give_back(self, book):
-        book.give_back()
-
     def load_from_disk(self):
         try:
             content = f.read(self.file)
@@ -46,10 +36,3 @@ class Repository:
 
         content = self.serializer.serialize(self.books)
         f.write(self.file, content)
-
-
-def instance():
-    if Repository.instance is None:
-        Repository.instance = Repository(file="library.txt", serializer=CsvSerializer())
-
-    return Repository.instance

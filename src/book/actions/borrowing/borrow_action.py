@@ -1,15 +1,13 @@
-import src.book.repository as repo
-
 from src.book.actions.borrowing.borrow_selection_action import BorrowSelectionAction
 from src.menu.actions.close_menu_action import CloseMenuAction
 from src.menu.menu import Menu
 
 
 class BorrowAction:
-    def run(self, menu):
-        available_books = repo.instance().find_available()
+    def run(self, menu, repo):
+        available_books = repo.find_available()
 
-        borrow_menu = Menu("Select book", on_error=menu.on_error)
+        borrow_menu = Menu("Select book", repo=repo, on_error=menu.on_error)
 
         for i in range(len(available_books)):
             book = available_books[i]

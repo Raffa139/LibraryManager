@@ -1,5 +1,3 @@
-import src.shared.file as f
-
 from src.book.author import Author
 from src.book.book import Book
 from src.book.publication_year import PublicationYear
@@ -17,7 +15,7 @@ class CsvSerializer:
         return "\n".join(lines)
 
     def deserialize(self, data):
-        lines = f.rm_empty_lines(data)
+        lines = self._rm_empty_lines(data)
         return [self._deserialize(line) for line in lines]
 
     def _serialize(self, book):
@@ -33,3 +31,7 @@ class CsvSerializer:
         borrowed = book_parts[SER_IDX_BORROWED]
 
         return Book(Title(title), Author(author), PublicationYear(year), bool(int(borrowed)))
+
+    def _rm_empty_lines(self, data):
+        lines = data.splitlines()
+        return [line for line in lines if line.strip()]

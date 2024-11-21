@@ -11,11 +11,6 @@ def read(file):
         print(f"Unexpected error reading file {file}.")
 
 
-def rm_empty_lines(data):
-    lines = data.splitlines()
-    return [line for line in lines if line.strip()]
-
-
 def write(file, content):
     try:
         with open(file, "w", encoding=UTF_8) as f:

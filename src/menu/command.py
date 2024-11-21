@@ -4,8 +4,8 @@ class Command:
         self.title = title
         self.action = action
 
-    def run(self, menu):
-        self.action.run(menu)
+    def run(self, menu, repo):
+        self.action.run(menu, repo)
 
     def __str__(self):
         return f"{self.trigger}. {self.title}"

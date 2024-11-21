@@ -5,8 +5,8 @@ from src.menu.menu import Menu
 
 
 class BorrowReturnAction:
-    def run(self, menu):
-        borrow_return_menu = Menu("Borrow / Return", on_error=menu.on_error)
+    def run(self, menu, repo):
+        borrow_return_menu = Menu("Borrow / Return", repo=repo, on_error=menu.on_error)
         borrow_return_menu.register_cmd("1", "Borrow", BorrowAction())
         borrow_return_menu.register_cmd("2", "Return", ReturnAction())
         borrow_return_menu.register_cmd("0", "Home", CloseMenuAction())

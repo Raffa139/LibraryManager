@@ -5,10 +5,11 @@ from src.menu.menu_exception import MenuException
 
 
 class Menu:
-    def __init__(self, title, *, on_error, subtitle=None):
+    def __init__(self, title, *, repo, on_error, subtitle=None):
         self.title = title
-        self.subtitle = subtitle
+        self.repo = repo
         self.on_error = on_error
+        self.subtitle = subtitle
         self.commands = []
         self.latest_command = None
         self.close_requested = False
@@ -36,9 +37,9 @@ class Menu:
     def run_cmd(self, command):
         try:
             self.latest_command = command
-            command.run(self)
+            command.run(self, self.repo)
         except MenuException as e:
-            self.on_error.run(self, e)
+            self.on_error.run(self, self.repo, e)
 
     def rerun_latest_cmd(self):
         if self.latest_command is not None:

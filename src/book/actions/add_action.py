@@ -1,5 +1,4 @@
 import src.shared.cli as cli
-import src.book.repository as repo
 
 from src.book.actions.list_action import ListAction
 from src.book.author import Author
@@ -14,7 +13,7 @@ from src.shared.value import InvalidValueException
 
 
 class AddAction:
-    def run(self, menu):
+    def run(self, menu, repo):
         cli.write_title_str("New book")
 
         try:
@@ -28,9 +27,9 @@ class AddAction:
             raise MenuException(f"Failed to create book. {details}")
 
         book = Book(title, author, year)
-        repo.instance().add(book)
+        repo.add(book)
 
-        next_steps_menu = Menu("Next steps", on_error=menu.on_error, subtitle="Book added successfully.")
+        next_steps_menu = Menu("Next steps", repo=repo, on_error=menu.on_error, subtitle="Book added successfully.")
         next_steps_menu.register_cmd("1", "Add another book", RerunAction(rerun_on=menu))
         next_steps_menu.register_cmd("2", "List all books", ListAction())
         next_steps_menu.register_cmd("0", "Home", CloseMenuAction())
