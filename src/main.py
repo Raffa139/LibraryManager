@@ -25,7 +25,7 @@ book_repo = repo.instance((
     Book(Title("Physik für Einsteiger"), Author("Albert Einstein"), PublicationYear("1975")),
 ))
 
-menu = Menu("=== Library Manager ===", on_error=ErrorAction())
+menu = Menu("Library Manager", on_error=ErrorAction())
 
 menu.register_cmd("1", "Add book", AddAction())
 menu.register_cmd("2", "List all books", ListAction())

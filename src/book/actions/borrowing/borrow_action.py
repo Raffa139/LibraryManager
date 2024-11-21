@@ -9,7 +9,7 @@ class BorrowAction:
     def run(self, menu):
         available_books = repo.instance().find_available()
 
-        borrow_menu = Menu("=== Select book ===", on_error=menu.on_error)
+        borrow_menu = Menu("Select book", on_error=menu.on_error)
 
         for i in range(len(available_books)):
             book = available_books[i]

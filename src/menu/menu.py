@@ -51,7 +51,7 @@ class Menu:
         self.close_requested = True
 
     def print_menu(self):
-        cli.write_str(self.title)
+        cli.write_title_str(self.title)
 
         if self.subtitle is not None:
             cli.write_str(self.subtitle)

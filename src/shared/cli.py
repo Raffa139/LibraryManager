@@ -8,3 +8,7 @@ def read_stripped_str(prompt=""):
 
 def write_str(string):
     print(string)
+
+
+def write_title_str(title):
+    write_str(f"=== {title} ===")
