@@ -23,16 +23,11 @@ class Menu:
                 break
 
     def take_cmd(self):
-        cli.write_str(self.title)
-
-        if self.subtitle is not None:
-            cli.write_str(self.subtitle)
-
-        cli.write_str(self)
-        cmd_input = cli.read_stripped_str()
+        self.print_menu()
+        cli_input = cli.read_stripped_str()
 
         for command in self.commands:
-            if cmd_input == command.cmd:
+            if cli_input == command.trigger:
                 self.run_cmd(command)
                 return True
         else:
@@ -54,6 +49,14 @@ class Menu:
 
     def request_close(self):
         self.close_requested = True
+
+    def print_menu(self):
+        cli.write_str(self.title)
+
+        if self.subtitle is not None:
+            cli.write_str(self.subtitle)
+
+        cli.write_str(self)
 
     def __str__(self):
         cmds = [f"  {command}" for command in self.commands]

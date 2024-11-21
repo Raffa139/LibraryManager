@@ -1,6 +1,6 @@
 class Command:
-    def __init__(self, cmd, title, action):
-        self.cmd = cmd
+    def __init__(self, trigger, title, action):
+        self.trigger = trigger
         self.title = title
         self.action = action
 
@@ -8,4 +8,4 @@ class Command:
         self.action.run(menu)
 
     def __str__(self):
-        return f"{self.cmd}. {self.title}"
+        return f"{self.trigger}. {self.title}"
