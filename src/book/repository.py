@@ -4,6 +4,12 @@ class Repository:
     def __init__(self, initial_date=()):
         self.books = list(initial_date)
 
+    def find_borrowed(self):
+        return [book for book in self.books if book.borrowed]
+
+    def find_available(self):
+        return [book for book in self.books if not book.borrowed]
+
     def find_by_title(self, title):
         return [book for book in self.books if book.title.value.lower().find(title.lower()) != -1]
 

@@ -1,5 +1,6 @@
 import src.book.repository as repo
 
+from src.book.actions.borrowing.borrow_return_action import BorrowReturnAction
 from src.book.author import Author
 from src.book.book import Book
 from src.book.publication_year import PublicationYear
@@ -29,6 +30,7 @@ menu = Menu("=== Library Manager ===", on_error=ErrorAction())
 menu.register_cmd("1", "Add book", AddAction())
 menu.register_cmd("2", "List all books", ListAction())
 menu.register_cmd("3", "Search books", SearchAction())
+menu.register_cmd("4", "Borrow/Return book", BorrowReturnAction())
 menu.register_cmd("5", "Save and exit", CloseMenuAction())
 
 menu.take_cmd_until_close()
