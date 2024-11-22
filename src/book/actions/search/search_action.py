@@ -11,6 +11,4 @@ class SearchAction:
         search_menu.register_cmd("2", "Search by author", SearchByAuthorAction())
         search_menu.register_cmd("0", "Home", CloseMenuAction())
 
-        search_menu.take_single_cmd()
-
-        # TODO: Result menu w/ options how to proceed
+        search_menu.take_cmd_until_close()
