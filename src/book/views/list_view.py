@@ -1,4 +1,4 @@
-import src.shared.cli as cli
+import src.cli as cli
 
 
 class ListView:

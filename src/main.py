@@ -6,7 +6,7 @@ from src.menu.menu import Menu
 from src.book.actions.add_action import AddAction
 from src.book.actions.list_action import ListAction
 from src.book.actions.search.search_action import SearchAction
-from src.save_exit_action import SaveExitAction
+from src.menu.actions.save_exit_action import SaveExitAction
 
 book_repo = Repository(file="library.txt", serializer=CsvSerializer())
 

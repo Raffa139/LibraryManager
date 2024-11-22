@@ -1,6 +1,6 @@
-import src.shared.cli as cli
+import src.cli as cli
 
-from src.shared.views.list_view import ListView
+from src.book.views.list_view import ListView
 
 
 class SearchByTitleAction:

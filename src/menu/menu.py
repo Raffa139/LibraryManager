@@ -1,4 +1,4 @@
-import src.shared.cli as cli
+import src.cli as cli
 
 from src.menu.command import Command
 from src.menu.menu_exception import MenuException
@@ -45,8 +45,8 @@ class Menu:
         if self.latest_command is not None:
             self.run_cmd(self.latest_command)
 
-    def register_cmd(self, cmd, title, action):
-        self.commands.append(Command(cmd, title, action))
+    def register_cmd(self, trigger, title, action):
+        self.commands.append(Command(trigger, title, action))
 
     def request_close(self):
         self.close_requested = True

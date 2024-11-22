@@ -1,4 +1,4 @@
-import src.shared.file as f
+import src.file as f
 
 
 class Repository:

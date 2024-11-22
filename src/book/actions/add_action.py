@@ -1,4 +1,4 @@
-import src.shared.cli as cli
+import src.cli as cli
 
 from src.book.actions.list_action import ListAction
 from src.book.author import Author
@@ -9,7 +9,7 @@ from src.menu.actions.close_menu_action import CloseMenuAction
 from src.menu.menu import Menu
 from src.menu.menu_exception import MenuException
 from src.menu.actions.rerun_action import RerunAction
-from src.shared.value import InvalidValueException
+from src.book.value import InvalidValueException
 
 
 class AddAction:

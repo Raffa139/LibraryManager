@@ -1,4 +1,4 @@
-from src.shared.invalid_value_exception import InvalidValueException
+from src.book.invalid_value_exception import InvalidValueException
 
 
 class Value:

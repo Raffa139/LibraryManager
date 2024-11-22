@@ -1,6 +1,6 @@
 import re
 
-from src.shared.value import Value
+from src.book.value import Value
 
 
 class PublicationYear(Value):
