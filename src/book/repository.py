@@ -39,6 +39,11 @@ class Repository:
         return [book for book in self.books if book.author.value.lower().find(author.lower()) != -1]
 
     def find_by_keyword(self, keyword):
+        """
+        Finds all books of which the given keyword is included in the books keyword list.
+        :param keyword: The keyword to search for
+        :return: A list of books which include the keyword
+        """
         return [book for book in self.books if keyword.lower() in book.keyword_strs_lower()]
 
     def add(self, book):

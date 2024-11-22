@@ -20,9 +20,17 @@ class Book:
         self.borrowed = False
 
     def keyword_strs(self):
+        """
+        Get the books keywords as strings.
+        :return: A list of keywords as strings
+        """
         return [keyword.value for keyword in self.keywords]
 
     def keyword_strs_lower(self):
+        """
+        Get the books keywords as lower strings.
+        :return: A list of keywords as lower strings
+        """
         return [k.lower() for k in self.keyword_strs()]
 
     def __str__(self):

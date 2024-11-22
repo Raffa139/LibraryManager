@@ -8,6 +8,12 @@ def read_str(prompt=""):
 
 
 def read_strs(separator, prompt=""):
+    """
+    Get input from the console and split it by the given separator.
+    :param separator: The separator to split the input on
+    :param prompt: The prompt
+    :return: A list of strings
+    """
     return read_str(prompt).split(separator)
 
 

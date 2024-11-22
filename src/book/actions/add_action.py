@@ -42,4 +42,10 @@ class AddAction:
         next_steps_menu.take_single_cmd()
 
     def _rm_empty(self, items):
+        """
+        Takes a list of strings and removes empty strings.
+        For empty strings trailing whitespaces are not accounted for.
+        :param items: The list of strings
+        :return: A list of non empty strings
+        """
         return [item for item in items if item.strip()]
