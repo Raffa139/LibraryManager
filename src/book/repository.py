@@ -38,6 +38,9 @@ class Repository:
         """
         return [book for book in self.books if book.author.value.lower().find(author.lower()) != -1]
 
+    def find_by_keyword(self, keyword):
+        return [book for book in self.books if keyword.lower() in book.keyword_strs_lower()]
+
     def add(self, book):
         """
         Adds a book to the library.

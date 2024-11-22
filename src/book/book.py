@@ -22,6 +22,9 @@ class Book:
     def keyword_strs(self):
         return [keyword.value for keyword in self.keywords]
 
+    def keyword_strs_lower(self):
+        return [k.lower() for k in self.keyword_strs()]
+
     def __str__(self):
         keywords = f"({', '.join(self.keyword_strs())})" if len(self.keywords) > 0 else ""
         return f"{'[x]' if self.borrowed else '[v]'} {self.title} by {self.author} from {self.year} {keywords}"
