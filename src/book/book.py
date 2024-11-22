@@ -6,9 +6,16 @@ class Book:
         self.borrowed = borrowed
 
     def borrow(self):
+        """
+        Mark the book as borrowed.
+        """
         self.borrowed = True
 
     def give_back(self):
+        """
+        Mark the book as returned.
+        :return:
+        """
         self.borrowed = False
 
     def __str__(self):
