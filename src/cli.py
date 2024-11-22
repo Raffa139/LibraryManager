@@ -7,6 +7,10 @@ def read_str(prompt=""):
     return input(prompt)
 
 
+def read_strs(separator, prompt=""):
+    return read_str(prompt).split(separator)
+
+
 def read_stripped_str(prompt=""):
     """
     Get input from the console. Strip the inputted value.

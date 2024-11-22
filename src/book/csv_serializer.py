@@ -1,12 +1,18 @@
 from src.book.author import Author
 from src.book.book import Book
+from src.book.keyword import Keyword
 from src.book.publication_year import PublicationYear
 from src.book.title import Title
+
+PROP_SEPARATOR = ","
+LIST_SEPARATOR = ";"
+NEW_LINE = "\n"
 
 SER_IDX_TITLE = 0
 SER_IDX_AUTHOR = 1
 SER_IDX_YEAR = 2
 SER_IDX_BORROWED = 3
+SER_IDX_KEYWORDS = 4
 
 
 class CsvSerializer:
@@ -17,7 +23,7 @@ class CsvSerializer:
         :return: Serialized content
         """
         lines = [self._serialize(book) for book in books]
-        return "\n".join(lines)
+        return NEW_LINE.join(lines)
 
     def deserialize(self, data):
         """
@@ -35,7 +41,20 @@ class CsvSerializer:
         :return: Serialized string
         """
         available = "1" if book.borrowed else "0"
-        return f"{book.title},{book.author},{book.year},{available}"
+
+        values = [
+            book.title.value,
+            book.author.value,
+            book.year.value,
+            available
+        ]
+
+        has_keywords = len(book.keywords) > 0
+        if has_keywords:
+            keywords = LIST_SEPARATOR.join(book.keyword_strs())
+            values.append(keywords)
+
+        return PROP_SEPARATOR.join(values)
 
     def _deserialize(self, data):
         """
@@ -43,14 +62,22 @@ class CsvSerializer:
         :param data: The string
         :return: A book object
         """
-        book_parts = data.split(",")
+        book_parts = data.split(PROP_SEPARATOR)
 
         title = book_parts[SER_IDX_TITLE]
         author = book_parts[SER_IDX_AUTHOR]
         year = book_parts[SER_IDX_YEAR]
         borrowed = book_parts[SER_IDX_BORROWED]
 
-        return Book(Title(title), Author(author), PublicationYear(year), bool(int(borrowed)))
+        has_keywords = len(book_parts) == 5
+        keywords = []
+
+        if has_keywords:
+            keywords_line = book_parts[SER_IDX_KEYWORDS]
+            keyword_strs = keywords_line.split(LIST_SEPARATOR)
+            keywords = [Keyword(k) for k in keyword_strs]
+
+        return Book(Title(title), Author(author), PublicationYear(year), bool(int(borrowed)), keywords)
 
     def _rm_empty_lines(self, data):
         """

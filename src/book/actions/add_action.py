@@ -3,6 +3,7 @@ import src.cli as cli
 from src.book.actions.list_action import ListAction
 from src.book.author import Author
 from src.book.book import Book
+from src.book.keyword import Keyword
 from src.book.publication_year import PublicationYear
 from src.book.title import Title
 from src.menu.actions.close_menu_action import CloseMenuAction
@@ -20,13 +21,17 @@ class AddAction:
             title = Title(cli.read_str("Title: "))
             author = Author(cli.read_str("Author: "))
             year = PublicationYear(cli.read_str("Year: "))
+
+            keyword_strs = cli.read_strs(",", "Keywords (separate by ','): ")
+            keyword_strs = self._rm_empty(keyword_strs)
+            keywords = [Keyword(k) for k in keyword_strs]
         except InvalidValueException as e:
             invalid_value = f"'{e.value}'" if e.value else None
             details = f"Invalid value {f'{invalid_value} ' if invalid_value else ''}for {e.obj_name} given."
 
             raise MenuException(f"Failed to create book. {details}")
 
-        book = Book(title, author, year)
+        book = Book(title, author, year, False, keywords)
         repo.add(book)
 
         next_steps_menu = Menu("Next steps", repo=repo, on_error=menu.on_error, subtitle="Book added successfully.")
@@ -35,3 +40,6 @@ class AddAction:
         next_steps_menu.register_cmd("0", "Home", CloseMenuAction())
 
         next_steps_menu.take_single_cmd()
+
+    def _rm_empty(self, items):
+        return [item for item in items if item.strip()]
