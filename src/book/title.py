@@ -10,7 +10,7 @@ class Title(Value):
         :param value: The value
         :return: True if the stripped value has min. length of 1, False otherwise
         """
-        return len(value.strip()) > 0
+        return len(value.strip()) > 0 and "," not in value
 
     def normalize(self, value):
         """
